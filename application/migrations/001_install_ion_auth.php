@@ -163,7 +163,7 @@ class Migration_Install_ion_auth extends CI_Migration {
 			'id' => '1',
 			'ip_address' => '127.0.0.1',
 			'username' => 'administrator',
-			'password' => '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36',
+			'password' => '4BsfRhn.a5.f5r5wQt7V0.76f8bac969f938c766',
 			'salt' => '',
 			'email' => 'admin@webtuners.pro',
 			'activation_code' => '',
