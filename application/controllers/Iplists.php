@@ -32,6 +32,11 @@ class Iplists extends MY_Controller {
         if (!empty($ip)) {
             $data['ip_lists'] = $this->ip_lists_model->findAll("ip like '%{$ip}%'");
         }
+        $data['ip_includes'] = $this->ip_lists_model->findCount();
+        $data['import_list'] = $this->import_lists_model->findAll();
+
+
+
 
         $data['content'] = $this->load->view('iplists/index', $data, TRUE);
 
@@ -161,7 +166,7 @@ class Iplists extends MY_Controller {
             //check a valid link
             $file = file_get_contents($this->input->post('link'));
             //save this to uploads
-            $filename = './uploads/ipsets' . time();
+            $filename = './uploads/ipsets-' . time();
             file_put_contents($filename, $file);
             $isProxy = $this->input->post('isProxy') == 1 ? 1 : 0;
             $isDatacenter = $this->input->post('isDatacenter') == 1 ? 1 : 0;

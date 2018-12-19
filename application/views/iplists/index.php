@@ -36,6 +36,50 @@
         <div class="row">
             <hr />
         </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-success">
+                    <div class="panel-heading">IP List Links</div>
+                    <div class="panel-body" style="max-height: 10;overflow-y: scroll;"></div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Stats</div>
+                        <div class="panel-body">
+                            IP Rules: <?php echo number_format($ip_includes) ?><br />
+                            List links: 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">Scheduled List Insertions</div>
+                    <div class="panel-body">
+                        <table class="table table-bordered table-condensed table-striped">
+                            <tr><th>Filename</th></tr>
+
+                            <?php foreach ($import_list as $il): ?>
+                                <tr>
+                                    <td><?php echo $il['filename'] ?></td>                        
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
         <?php if (!empty($ip_lists)): ?>    
             <p>Below is a list of the IP's to be blocked</p>
             <div class="panel panel-info">
