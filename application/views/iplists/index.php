@@ -41,7 +41,16 @@
             <div class="col-md-4">
                 <div class="panel panel-success">
                     <div class="panel-heading">IP List Links</div>
-                    <div class="panel-body" style="max-height: 10;overflow-y: scroll;"></div>
+                    <div class="panel-body" style="max-height: 10;overflow-y: scroll;">
+                        <table class="table table-bordered table-condensed table-striped">
+                            <tr><th>Links</th></tr>
+                            <?php foreach ($list_links as $link): ?>
+                                <tr>
+                                    <td><?php echo $link['link'] ?></td>                        
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    </div>
                 </div>
 
             </div>
@@ -51,7 +60,9 @@
                         <div class="panel-heading">Stats</div>
                         <div class="panel-body">
                             IP Rules: <?php echo number_format($ip_includes) ?><br />
-                            List links: 
+                            List links: <?php echo count($list_links); ?><br />
+                            Scheduled Import: <?php echo count($import_list); ?>
+
 
                         </div>
                     </div>
@@ -59,7 +70,7 @@
             </div>
             <div class="col-md-4">
                 <div class="panel panel-warning">
-                    <div class="panel-heading">Scheduled List Insertions</div>
+                    <div class="panel-heading">Scheduled Import</div>
                     <div class="panel-body">
                         <table class="table table-bordered table-condensed table-striped">
                             <tr><th>Filename</th></tr>

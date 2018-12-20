@@ -20,6 +20,7 @@ class Iplists extends MY_Controller {
 
         $this->load->model('ip_lists_model');
         $this->load->model('import_lists_model');
+        $this->load->model('list_links_model');
         $this->load->helper('iplists');
     }
 
@@ -33,6 +34,7 @@ class Iplists extends MY_Controller {
             $data['ip_lists'] = $this->ip_lists_model->findAll("ip like '%{$ip}%'");
         }
         $data['ip_includes'] = $this->ip_lists_model->findCount();
+        $data['list_links'] = $this->list_links_model->findAll();
         $data['import_list'] = $this->import_lists_model->findAll();
 
 
@@ -171,13 +173,24 @@ class Iplists extends MY_Controller {
             $isProxy = $this->input->post('isProxy') == 1 ? 1 : 0;
             $isDatacenter = $this->input->post('isDatacenter') == 1 ? 1 : 0;
 
-
+            /** Import List * */
             $import_lists_data = array(
                 'filename' => $filename,
                 'isProxy' => $isProxy,
                 'isDatacenter' => $isDatacenter
             );
             $this->import_lists_model->insert($import_lists_data);
+
+            /** List Links * */
+            $list_links_data = array(
+                'link' => $this->input->post('link'),
+                'isProxy' => $isProxy,
+                'isDatacenter' => $isDatacenter
+            );
+            
+            $this->list_links_model->insert($list_links_data);
+            
+            
 
 
             $this->session->set_flashdata('message', 'The IP set is scheduled to be added ');
