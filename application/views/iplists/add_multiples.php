@@ -2,7 +2,7 @@
 
 <form method="post" role="form" enctype="multipart/form-data">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="form-group">                
                 <label>IP lists:</label>
                 <textarea  name="multiples" class="form-control" placeholder="Type the ip address per line" rows="5"></textarea>
@@ -20,7 +20,9 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <button class="btn btn-info" type="submit">Add</button>
+            <div class="form-group">
+                <button class="btn btn-sm btn-info" type="submit">Add</button>
+            </div>
         </div>
     </div>
 

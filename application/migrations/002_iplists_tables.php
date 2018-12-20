@@ -31,7 +31,7 @@ Class Migration_iplists_tables extends CI_Migration {
                 'constraint' => 1,
                 'null' => TRUE
             ),
-            'IsProxy' => array(
+            'isProxy' => array(
                 'type' => 'BIT',
                 'constraint' => 1,
                 'null' => TRUE
@@ -56,7 +56,7 @@ Class Migration_iplists_tables extends CI_Migration {
                 'constraint' => 1,
                 'null' => TRUE
             ),
-            'IsProxy' => array(
+            'isProxy' => array(
                 'type' => 'BIT',
                 'constraint' => 1,
                 'null' => TRUE

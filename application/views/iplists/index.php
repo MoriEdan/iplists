@@ -1,4 +1,4 @@
-<script>
+<script type="text/javascript">
 
     $(document).ready(function () {
         $('#table1').dataTable();
@@ -6,7 +6,7 @@
 </script>
 <div class="row">
     <div class="col-md-12">
-        <h2>Manage IP List</h2>
+        <h2><span class="fa fa-archive"></span>&nbsp;Manage IP List</h2>
 
         <?php if ($this->ion_auth->is_admin()): ?>
             <p>
@@ -23,10 +23,10 @@
         <div class="row">
             <form method="post" role="search">  
                 <div class="col-md-4">
-                    <div class="input-group">
+                    <div class="input-group input-group-sm">
                         <input type="text" name="ip" class="form-control"/>
                         <span class="input-group-btn">
-                            <button class="btn btn-info btn-md" type="submit">
+                            <button class="btn btn-info" type="submit">
                                 <span class="glyphicon glyphicon-search"></span>&nbsp;Search</button>
                         </span>
                     </div>
@@ -46,7 +46,7 @@
                             <tr><th>Links</th></tr>
                             <?php foreach ($list_links as $link): ?>
                                 <tr>
-                                    <td><?php echo $link['link'] ?></td>                        
+                                    <td><a href="<?php echo $link['link'] ?>" data-toggle="tooltip" title="<?php echo $link['link'] ?>" target="_blank"><?php echo $link['link'] ?></a></td>                        
                                 </tr>
                             <?php endforeach; ?>
                         </table>
@@ -139,6 +139,17 @@
                 <a href="<?php echo base_url(); ?>iplists/add_link" class="btn btn-xs btn-info"><i class="fa fa-plus"></i>&nbsp;Add IP List Link</a>
             </p>
         <?php endif; ?>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4" class="text-center">
+            <h4 class="text-center">Download the wordpress plugin</h4>
+            <div class="col-md-12 text-center">
+                <a href="https://github.com/slick2/wtp-ipblock/archive/v1.0.2.zip" class="btn btn-primary btn-lg" ><span class="fa fa-download"></span>&nbsp;Download</a>
+            </div>
+        </div>
+
     </div>
 
 </div>

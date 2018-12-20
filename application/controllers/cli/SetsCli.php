@@ -27,7 +27,7 @@ class SetsCli extends CI_Controller {
             $ipsets = read_ipset($file['filename']);
             echo 'Processing';
             $isDatacenter = $file['isDatacenter'] == 1 ? TRUE : FALSE;
-            $isProxy = $file['isProxy'] == 1 ? TRUE : FALSE;
+            $isProxy = $file['IsProxy'] == 1 ? TRUE : FALSE;
             foreach ($ipsets as $ip) {
                 $ip_data = array();
                 $ip = clean_ip($ip);

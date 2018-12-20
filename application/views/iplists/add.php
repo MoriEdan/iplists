@@ -19,7 +19,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-        <button class="btn btn-info" type="submit">Add</button>
+        <button class="btn btn-sm btn-info" type="submit">Add</button>
         </div>
     </div>
         
