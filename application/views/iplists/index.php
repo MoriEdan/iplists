@@ -30,6 +30,7 @@
                         $progressbar.css('width', '100%');
                     }
                     , 10000);
+                    location.reload();
                 },
                 error: function (data) {
                     alert("Something went wrong !");
