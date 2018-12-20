@@ -2,6 +2,41 @@
 
     $(document).ready(function () {
         $('#table1').dataTable();
+        $('#progress-body').hide();
+
+        $('.remove-link').on('click', function (e) {
+            e.preventDefault();
+            $('#progress-body').show();
+            var $progressbar = $("#progressbar");
+            $('#progress-bar-status').text('Processing');
+            $progressbar.show();
+            $(function () {
+                $progressbar.css('width', '30%');
+            });
+            var link_id = $(this).attr('data-link-id');
+            var url = "<?php echo site_url(); ?>iplists/remove_link/" + link_id;
+            console.log(url);
+            $.ajax({
+                url: url,
+                type: "GET",
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    //$('#progress-body').hide();
+                    $progressbar.css('width', '100%');
+                    $('#progress-bar-status').text('Complete');
+                    setTimeout(function () {
+                        $('#progress-body').hide();
+                        $progressbar.css('width', '100%');
+                    }
+                    , 10000);
+                },
+                error: function (data) {
+                    alert("Something went wrong !");
+                }
+            });
+
+        });
     });
 </script>
 <div class="row">
@@ -38,23 +73,34 @@
         </div>
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-12">
+                <div class="progress" id="progress-body"  style="height:24px;">                            
+                    <div class="progress-bar"  style="line-height:24px;vertical-align: middle;" id="progressbar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                        <span id="progress-bar-status">Processing</span>
+                    </div>
+                </div>
                 <div class="panel panel-success">
                     <div class="panel-heading">IP List Links</div>
-                    <div class="panel-body" style="max-height: 10;overflow-y: scroll;">
+                    <div class="panel-body" style="max-height: 20;overflow-y: scroll;">
+
                         <table class="table table-bordered table-condensed table-striped">
-                            <tr><th>Links</th></tr>
+                            <tr><th>Links</th><th>Action</th></tr>
                             <?php foreach ($list_links as $link): ?>
                                 <tr>
-                                    <td><a href="<?php echo $link['link'] ?>" data-toggle="tooltip" title="<?php echo $link['link'] ?>" target="_blank"><?php echo $link['link'] ?></a></td>                        
+                                    <td style="min-width:10px"><a href="<?php echo $link['link'] ?>" data-toggle="tooltip" title="<?php echo $link['link'] ?>" target="_blank"><?php echo $link['link'] ?></a></td>                        
+                                    <td><a href="#" data-link-id="<?php echo $link['id'] ?>" class="btn btn-danger btn-xs remove-link">remove</a>                                        
+                                    </td>
                                 </tr>
+
                             <?php endforeach; ?>
                         </table>
                     </div>
                 </div>
 
             </div>
-            <div class="col-md-4">
+        </div>
+        <div class="row">
+            <div class="col-md-6">
                 <div class="panel-group">
                     <div class="panel panel-primary">
                         <div class="panel-heading">Stats</div>
@@ -68,7 +114,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="panel panel-warning">
                     <div class="panel-heading">Scheduled Import</div>
                     <div class="panel-body">

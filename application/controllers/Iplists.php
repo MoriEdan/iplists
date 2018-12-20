@@ -187,10 +187,10 @@ class Iplists extends MY_Controller {
                 'isProxy' => $isProxy,
                 'isDatacenter' => $isDatacenter
             );
-            
+
             $this->list_links_model->insert($list_links_data);
-            
-            
+
+
 
 
             $this->session->set_flashdata('message', 'The IP set is scheduled to be added ');
@@ -199,6 +199,28 @@ class Iplists extends MY_Controller {
 
         $data['content'] = $this->load->view('iplists/add_link', $data, TRUE);
         $this->render($data);
+    }
+
+    public function remove_link($id) {
+        //read the link
+        
+        $link = $this->list_links_model->find('id=' . $id);
+        if (!empty($link)) {
+            $file = file_get_contents($link['link']);
+            $ipsets = explode("\n",$file);
+            foreach ($ipsets as $ipset) {
+                //valid ip
+                if(check_ip($ipset)){
+                    $ipset = clean_ip($ipset);
+                    $this->ip_lists_model->query("DELETE FROM ip_lists WHERE ip='".$ipset."'");                                        
+                }
+                
+                
+            }
+        }
+        $this->list_links_model->remove($id);
+        json_encode(array('status'=> 'done'));
+        
     }
 
     public function edit($id) {
