@@ -11,6 +11,7 @@
 
         <!-- Bootstrap core CSS -->
         <link href="<?= site_url(); ?>components/bootswatch-dist/css/bootstrap.min.css" rel="stylesheet">
+        
         <link rel="stylesheet" href="<?= site_url(); ?>assets/css/datatables-bootstrap3.css">
         <link href="<?= site_url(); ?>assets/css/custom.css" rel="stylesheet" media="screen">
 
@@ -59,14 +60,17 @@
         <?php else : ?>
             <?= $this->load->view('partials/headers/default', [], true) ?>
         <?php endif; ?>
-        <div class="container">
+        <div class="container" style="background-color:#FFFFFF;margin-top:0px;min-height:100%;height:100%">
 
             <?= $this->load->view('partials/session-flash', [], true) ?>
 
 
             <?php echo $content; ?>
 
-
+        <br />
+        <br />
+        <br />
+        <br />
 
         </div> <!-- /container -->
         <footer class="footer">

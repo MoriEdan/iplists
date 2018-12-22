@@ -22,6 +22,7 @@
                 <?php endif; ?>
                     <li><a href="/documentation">Documentation</a></li>
                     <li><a href="/downloads">Downloads</a></li>
+                    <li><a href="/api_man">API</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
