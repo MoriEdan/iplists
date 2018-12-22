@@ -1,4 +1,5 @@
 <?php
+
 use IPTools\Network;
 use IPTools\Range;
 
@@ -17,17 +18,29 @@ class Main extends MY_Controller {
         if ($this->ion_auth->logged_in()) {
             redirect('iplists');
         }
-                
+
         $data = array();
         $data['content'] = $this->load->view('main', [], TRUE);
         $this->render($data);
     }
 
+    public function documentation() {
+        $data = array();
+        $data['content'] = $this->load->view('documentation', [], TRUE);
+        $this->render($data);
+    }
+
+    public function downloads() {
+        $data = array();
+        $data['content'] = $this->load->view('downloads', [], TRUE);
+        $this->render($data);
+    }
+
     public function test() {
-        $ip='asdfasdf';
-        $network =  Network::parse($ip);
+        $ip = 'asdfasdf';
+        $network = Network::parse($ip);
         echo $network->valid();
-    }   
+    }
 
     public function test_layout() {
         $this->setBaseLayout('bootswatch');

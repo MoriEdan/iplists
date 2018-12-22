@@ -516,4 +516,4 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-$config['site_main_title'] = 'IPLists';
+$config['site_main_title'] = 'IP Lists';

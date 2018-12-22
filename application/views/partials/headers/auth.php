@@ -1,43 +1,42 @@
 <div class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			
-			<a href="<?php echo site_url();?>" class="navbar-brand"><?= $this->config->item('site_main_title') ?></a>
-			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-		</div>
-		<div class="navbar-collapse collapse" id="navbar-main">
-			<ul class="nav navbar-nav">
-				<li>
-					<?php if($this->ion_auth->is_admin()):?>
-					<a href="/auth">Manage</a>
-					<?php else:?>
-					<a href="/auth/login">Login</a>
-					<?php endif;?>
-				</li>
-
-			</ul>
-
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="<?php echo site_url(); ?>" class="navbar-brand"><?= $this->config->item('site_main_title') ?></a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <?php if ($this->ion_auth->is_admin()): ?>
+                    <li>					
+                        <a href="/auth">Manage</a>
+                    </li>                    
+                <?php else: ?>
+                    <li>
+                        <a href="/auth/login">Login</a>
+                    </li>
+                <?php endif; ?>
+                    <li><a href="/documentation">Documentation</a></li>
+                    <li><a href="/downloads">Downloads</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">                        
                         <?= empty($authInfo['first_name']) ? '' : $authInfo['first_name'] ?>
                         <b class="caret"></b>
                     </a>
-
                     <ul class="dropdown-menu">
-						<li><a href="<?= site_url('auth/edit_user/'.$authInfo['id'])?>">Account</a></li>
+                        <li><a href="<?= site_url('auth/edit_user/' . $authInfo['id']) ?>">Account</a></li>
                         <li><a href="<?= site_url('auth/logout') ?>"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     </ul>
                 </li>
-			</ul>
-
-		</div>
-	</div>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <?php /*

@@ -55,7 +55,6 @@
                 <a href="<?php echo base_url(); ?>iplists/add_link" class="btn btn-xs btn-info"><i class="fa fa-plus"></i>&nbsp;Add IP List Link</a>
             </p>
         <?php endif; ?>
-
         <div class="row">
             <form method="post" role="search">  
                 <div class="col-md-4">
@@ -71,72 +70,6 @@
         </div>
         <div class="row">
             <hr />
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="progress" id="progress-body"  style="height:24px;">                            
-                    <div class="progress-bar"  style="line-height:24px;vertical-align: middle;" id="progressbar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
-                        <span id="progress-bar-status">Processing</span>
-                    </div>
-                </div>
-                <div class="panel panel-success">
-                    <div class="panel-heading">IP List Links</div>
-                    <div class="panel-body" style="max-height: 20;overflow-y: scroll;">
-
-                        <table class="table table-bordered table-condensed table-striped">
-                            <tr><th>Links</th><th>Action</th></tr>
-                            <?php foreach ($list_links as $link): ?>
-                                <tr>
-                                    <td style="min-width:10px"><a href="<?php echo $link['link'] ?>" data-toggle="tooltip" title="<?php echo $link['link'] ?>" target="_blank"><?php echo $link['link'] ?></a></td>                        
-                                    <td><a href="#" data-link-id="<?php echo $link['id'] ?>" class="btn btn-danger btn-xs remove-link">remove</a>                                        
-                                    </td>
-                                </tr>
-
-                            <?php endforeach; ?>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="panel-group">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Stats</div>
-                        <div class="panel-body">
-                            IP Rules: <?php echo number_format($ip_includes) ?><br />
-                            List links: <?php echo count($list_links); ?><br />
-                            Scheduled Import: <?php echo count($import_list); ?>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="panel panel-warning">
-                    <div class="panel-heading">Scheduled Import</div>
-                    <div class="panel-body">
-                        <table class="table table-bordered table-condensed table-striped">
-                            <tr><th>Filename</th></tr>
-
-                            <?php foreach ($import_list as $il): ?>
-                                <tr>
-                                    <td><?php echo $il['filename'] ?></td>                        
-                                </tr>
-                            <?php endforeach; ?>
-                        </table>
-
-
-                    </div>
-                </div>
-
-            </div>
-
-
-
         </div>
         <?php if (!empty($ip_lists)): ?>    
             <p>Below is a list of the IP's to be blocked</p>
@@ -174,29 +107,72 @@
                 </table>
 
             </div>
-        <?php endif; ?>
-        <?php if ($this->ion_auth->is_admin()): ?>
-            <p>
-                <a href="<?php echo base_url(); ?>iplists/add" class="btn btn-xs btn-info"><i class="fa fa-plus"></i>&nbsp;Add New Single IP</a>
-                &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="<?php echo base_url(); ?>iplists/add_multiples" class="btn btn-xs btn-info"><i class="fa fa-plus"></i>&nbsp;Add Multiple IP</a>
-                &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="<?php echo base_url(); ?>iplists/import_multiples" class="btn btn-xs btn-info"><i class="fa fa-plus"></i>&nbsp;Import a CSV File</a>
-                &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="<?php echo base_url(); ?>iplists/add_link" class="btn btn-xs btn-info"><i class="fa fa-plus"></i>&nbsp;Add IP List Link</a>
-            </p>
-        <?php endif; ?>
-    </div>
+        <?php else: ?>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="progress" id="progress-body"  style="height:24px;">                            
+                        <div class="progress-bar"  style="line-height:24px;vertical-align: middle;" id="progressbar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                            <span id="progress-bar-status">Processing</span>
+                        </div>
+                    </div>
+                    <div class="panel panel-success">
+                        <div class="panel-heading">IP List Links</div>
+                        <div class="panel-body" style="max-height: 20;overflow-y: scroll;">
 
+                            <table class="table table-bordered table-condensed table-striped">
+                                <tr><th>Links</th><th>Action</th></tr>
+                                <?php foreach ($list_links as $link): ?>
+                                    <tr>
+                                        <td style="min-width:10px"><a href="<?php echo $link['link'] ?>" data-toggle="tooltip" title="<?php echo $link['link'] ?>" target="_blank"><?php echo $link['link'] ?></a></td>                        
+                                        <td><a href="#" data-link-id="<?php echo $link['id'] ?>" class="btn btn-danger btn-xs remove-link">remove</a>                                        
+                                        </td>
+                                    </tr>
 
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4" class="text-center">
-            <h4 class="text-center">Download the wordpress plugin</h4>
-            <div class="col-md-12 text-center">
-                <a href="https://github.com/slick2/wtp-ipblock/archive/v1.0.2.zip" class="btn btn-primary btn-lg" ><span class="fa fa-download"></span>&nbsp;Download</a>
+                                <?php endforeach; ?>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel-group">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">Stats</div>
+                            <div class="panel-body">
+                                IP Rules: <?php echo number_format($ip_includes) ?><br />
+                                List links: <?php echo count($list_links); ?><br />
+                                Scheduled Import: <?php echo count($import_list); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">Scheduled Import</div>
+                        <div class="panel-body">
+                            <table class="table table-bordered table-condensed table-striped">
+                                <tr><th>Filename</th></tr>
 
+                                <?php foreach ($import_list as $il): ?>
+                                    <tr>
+                                        <td><?php echo $il['filename'] ?></td>                        
+                                    </tr>
+                                <?php endforeach; ?>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        <?php endif; ?>        
     </div>
+
+
+
 
 </div>

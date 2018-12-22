@@ -68,17 +68,14 @@
 
 
 
-
         </div> <!-- /container -->
-        <div class="container">
-            <footer>
-                <div class="row">
-                    <div class="col-lg-12">
-                        &nbsp;&copy; <?= date('Y') ?>. <?= $this->config->item('site_main_title') ?>. All Rights Reserved.
-                    </div>
-                </div>
-            </footer>
-        </div>
+        <footer class="footer">
+            <div class="container">
+                <br />
+                <p>&nbsp;&copy; <?= date('Y') ?>. <?= $this->config->item('site_main_title') ?>. All Rights Reserved.</p>
+            </div>
+        </footer>
+
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
