@@ -97,27 +97,43 @@
         <p>Check an IP 
             <code><a href="https://check.youmake.net/api/check">https://check.youmake.net/api/check</a></code>                       
         <p>Make a post value using jQuery</p>
-        
-            <pre>
+
+        <pre>
 <code class="javascript" >            
-    $.ajax({
-        url: "https://check.youmake.net/api/check",
-        data: {ip:"123.255.255.255"},
-        type: "GET",
-        headers: {"X-API-KEY": "4cccscwckgs00008s8ssoo04wc88k8k0sggk0k0k"},
-        dataType: "json",
-        success: function (data) {
-        console.log(data);
-        ....
-        }
-    });            
+$.ajax({
+    url: "https://check.youmake.net/api/check",
+    data: {ip:"123.255.255.255"},
+    type: "GET",
+    headers: {"X-API-KEY": "API_KEY_HERE"},
+    dataType: "json",
+    success: function (data) {
+    console.log(data);
+    ....
+    }
+});            
 </code>
-            </pre>
-
-
-
+        </pre>
+        <p>Wordpress Function using wp_remote_get()</p>
+        <pre>
+<code class="php">
+wp_remote_get( 'https://check.youmake.net/api/ip/check/?ip=127.0.0.1',  array( 'timeout' => 30, 'headers' => array( 'X-API-KEY' => 'API_KEY_HERE')) );    
+</code>
+        </pre>
+        <p>Accessing the API using php CURL</p>
+        <pre>
+<code class="php">
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://check.youmake.net/api/ip/check/');
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-API-KEY' => 'API_KEY_HERE'));
+curl_setopt($ch, CURLOPT_VERBOSE, 1);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+$response = curl_exec($ch);
+curl_close($ch);
+</code>
+        </pre>
         <h2 id="wordpres_plugin">Wordpress Plugin</h2>
-
     </div>
 </div>
 
