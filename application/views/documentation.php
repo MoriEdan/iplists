@@ -1,4 +1,13 @@
-<link href="<?= site_url(); ?>components/bootstrap/docs/assets/css/docs.css" rel="stylesheet">
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+    });
+</script>
 <div class="row">
     <div class="col-md-12">
         <h1><span class="fa fa-book"></span>&nbsp;Documentation</h1>
@@ -28,7 +37,7 @@
         <ul>
             <li>Clone the repository at <a href="https://github.com/slick2/iplists" target="_blank">https://github.com/slick2/iplists</a>
                 <br />
-                <code class="language-bash">
+                <code class="bash">
                     git clone https://github.com/slick2/iplists.git
                 </code>
             </li>
@@ -88,20 +97,22 @@
         <p>Check an IP 
             <code><a href="https://check.youmake.net/api/check">https://check.youmake.net/api/check</a></code>                       
         <p>Make a post value using jQuery</p>
-        <code>            
-            $.ajax({
-                url: "https://check.youmake.net/api/check",
-                data: {ip:"123.255.255.255"},
-                type: "GET",
-                headers: {"X-API-KEY": "4cccscwckgs00008s8ssoo04wc88k8k0sggk0k0k"},
-                dataType: "json",
-                success: function (data) {
-                console.log(data);
-                ....
-                }
-            });            
-        </code>
-
+        
+            <pre>
+<code class="javascript" >            
+    $.ajax({
+        url: "https://check.youmake.net/api/check",
+        data: {ip:"123.255.255.255"},
+        type: "GET",
+        headers: {"X-API-KEY": "4cccscwckgs00008s8ssoo04wc88k8k0sggk0k0k"},
+        dataType: "json",
+        success: function (data) {
+        console.log(data);
+        ....
+        }
+    });            
+</code>
+            </pre>
 
 
 
@@ -109,3 +120,5 @@
 
     </div>
 </div>
+
+
