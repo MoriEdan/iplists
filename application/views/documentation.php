@@ -1,8 +1,7 @@
-<link href="<?= site_url(); ?>components/bootswatch-dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= site_url(); ?>components/bootstrap/docs/assets/css/docs.css" rel="stylesheet">
 <div class="row">
     <div class="col-md-12">
-        <h1>Documentation</h1>
+        <h1><span class="fa fa-book"></span>&nbsp;Documentation</h1>
 
         <ol>
             <li><a href="#introduction">Introduction</a></li>
@@ -64,8 +63,47 @@
         </ul>
 
         <h2 id="web_panel">Web Panel</h2>
+        <h4>Login</h4>
+        <p>To access IP List features, a user name and password is required.  The default password for new installation is </p>
+        <p>
+            <code>username: admin@webtuners.pro</code>
+            <code>password: password</code>
+        </p>        
+        <h4>Dashboard</h4>
+        <p>On the dashboard would show some basic information about the system, the pending import, the list of links of IP set list and removal of data based on the IP set lists</p>        
+        <h4>Add a Single IP rule</h4>
+        <p>This feature allow the user to enter a single IP set rule, this is advisable for instant entering of a set rule.  The data would not be added if it's included in a set list or a range of IP set lists. </p>
+        <h4>Add Multiple IP rule</h4>
+        <p>This feature allow the user to enter a mulitple IP set rule, this is advisable for a set list less than 100, new IP rules should be separated by new line.  The data would not be added if it's included in a set list or a range of IP set lists. </p>                
+        <h4>Import an IP rule</h4>
+        <p>This feature allow the user to upload a csv, netlist, text file which contains a large IP set rule, new IP rules should be separated by new line.  The data would not be added if it's included in a set list or a range of IP set lists. </p>                
+        <h4>Add a Link IP Set List</h4>
+        <p>This feature allow the user to link a csv, netlist, text file which contains a large IP set rule . The site <a href="https://firehol.org">https://fireholorg</a> has a repo in github that maintains IP set rule.  Their data on github can be added provided that raw link is added.</p>
+        <p>The data would not be added if it's included in a set list or a range of IP set lists. </p>                
 
         <h2 id="api">API</h2>
+        <p>The data on IP Lists provided an API which can query an IP if it's listed as data center or a proxy.</p>
+        <p>End point url <a href="https://check.youmake.net/api/">https://check.youmake.net/api/</a><p>
+        <h4>Methods</h4>
+        <p>Check an IP 
+            <code><a href="https://check.youmake.net/api/check">https://check.youmake.net/api/check</a></code>                       
+        <p>Make a post value using jQuery</p>
+        <code>            
+            $.ajax({
+                url: "https://check.youmake.net/api/check",
+                data: {ip:"123.255.255.255"},
+                type: "GET",
+                headers: {"X-API-KEY": "4cccscwckgs00008s8ssoo04wc88k8k0sggk0k0k"},
+                dataType: "json",
+                success: function (data) {
+                console.log(data);
+                ....
+                }
+            });            
+        </code>
+
+
+
 
         <h2 id="wordpres_plugin">Wordpress Plugin</h2>
 

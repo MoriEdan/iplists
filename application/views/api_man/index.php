@@ -3,7 +3,7 @@
         $('#create-api').click(function () {
             $.ajax({
                 url: "/api/key/",
-                data:
+                data: {level:5},
                 type: "PUT",
                 headers: {"X-API-KEY": "4cccscwckgs00008s8ssoo04wc88k8k0sggk0k0k"},
                 dataType: "json",
@@ -20,7 +20,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h1>API keys</h1>
+        <h1><span class="fa fa-key"></span>&nbsp;API keys</h1>
         <button class="btn btn-warning" id="create-api">Create API Key</button>
 
         <table class="table table-condensed table-striped">
