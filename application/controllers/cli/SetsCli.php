@@ -1,4 +1,5 @@
 <?php
+
 use IPTools\Range;
 use IPTools\Network;
 
@@ -24,14 +25,19 @@ class SetsCli extends CI_Controller {
         foreach ($files as $file) {
 
             $ipsets = read_ipset($file['filename']);
-            echo 'Processing';
+            echo 'Processing - ' . $file['filename'] . "\n";
             $isDatacenter = $file['isDatacenter'] == 1 ? TRUE : FALSE;
             $isProxy = $file['isProxy'] == 1 ? TRUE : FALSE;
+            $counter = 1;
             foreach ($ipsets as $ip) {
                 $ip_data = array();
                 $ip = clean_ip($ip);
-                echo '.';
+                echo 'line - ' . $counter . " {$ip}\n";
                 if (check_ip($ip)) {
+                    if (!$this->ip_lists_model->is_unique($ip)) {
+                        $counter++;
+                        continue;
+                    }
                     //insert the IP                    
                     $range = Range::parse($ip);
                     $first_ip = $range->getFirstIP();
@@ -44,14 +50,15 @@ class SetsCli extends CI_Controller {
                         'isProxy' => $isProxy
                     );
                     try {
-                        $this->ip_lists_model->insert_unique($ip_data);
+                        $this->ip_lists_model->insert($ip_data);
                     } catch (Exception $e) {
                         echo 'Caught exception: ', $e->getMessage(), "\n";
                         mail('carey.dayrit@gmail.com', 'Cron Failed IP Insertion', $e->getMessage());
                     }
                 }
+                $counter++;
             }
-            echo $file['id'].' - processed';
+            echo $file['filename'] . ' - done';
             $this->import_lists_model->remove($file['id']);
             unlink("{$file['filename']}");
         }

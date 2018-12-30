@@ -18,6 +18,14 @@ class Ip_lists_model extends MY_Model {
         }
     }
 
+    function is_unique($ip) {
+        if ($this->findCount("ip='" . $ip . "'")) {
+            FALSE;
+        } else {
+            TRUE;
+        }
+    }
+
     function insert_unique($ip_data) {
         if ($this->findCount("ip='" . $ip_data['ip'] . "'")) {
             return FALSE;
