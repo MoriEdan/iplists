@@ -33,7 +33,7 @@ class SetsCli extends CI_Controller {
                 $ip_data = array();
                 $ip = clean_ip($ip);
                 echo 'line - ' . $counter . " {$ip}\n";
-                if (check_ip($ip)) {
+                if (check_ip($ip)) {                    
                     if (!$this->ip_lists_model->is_unique($ip)) {
                         $counter++;
                         continue;
@@ -49,12 +49,9 @@ class SetsCli extends CI_Controller {
                         'isDatacenter' => $isDatacenter,
                         'isProxy' => $isProxy
                     );
-                    try {
-                        $this->ip_lists_model->insert($ip_data);
-                    } catch (Exception $e) {
-                        echo 'Caught exception: ', $e->getMessage(), "\n";
-                        mail('carey.dayrit@gmail.com', 'Cron Failed IP Insertion', $e->getMessage());
-                    }
+                   
+                    $this->ip_lists_model->insert($ip_data);
+                   
                 }
                 $counter++;
             }

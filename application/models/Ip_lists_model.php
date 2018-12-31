@@ -20,9 +20,9 @@ class Ip_lists_model extends MY_Model {
 
     function is_unique($ip) {
         if ($this->findCount("ip='" . $ip . "'")) {
-            FALSE;
+            return FALSE;
         } else {
-            TRUE;
+            return TRUE;
         }
     }
 
