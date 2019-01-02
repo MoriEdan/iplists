@@ -55,11 +55,11 @@ class SetsCli extends CI_Controller {
                 }
                 $counter++;
             }
-            echo $file['filename'] . ' - done';
+            echo $file['filename'] . ' - done'."\n";
             $this->import_lists_model->remove($file['id']);
             unlink("{$file['filename']}");
         }
-        echo 'Done';
+        echo 'Import Done';
     }
 
 }

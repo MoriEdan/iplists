@@ -120,10 +120,12 @@
                         <div class="panel-body" style="max-height: 20;overflow-y: scroll;">
 
                             <table class="table table-bordered table-condensed table-striped">
-                                <tr><th>Links</th><th>Action</th></tr>
+                                <tr><th>Links</th><th>DC</th><th>P</th><th>Action</th></tr>
                                 <?php foreach ($list_links as $link): ?>
                                     <tr>
                                         <td style="min-width:10px"><a href="<?php echo $link['link'] ?>" data-toggle="tooltip" title="<?php echo $link['link'] ?>" target="_blank"><?php echo $link['link'] ?></a></td>                        
+                                        <td><?php echo $link['isDatacenter']==1 ? 'Yes' : 'No'?></td>
+                                        <td><?php echo $link['isProxy']==1 ? 'Yes' : 'No'?></td>
                                         <td><a href="#" data-link-id="<?php echo $link['id'] ?>" class="btn btn-danger btn-xs remove-link">remove</a>                                        
                                         </td>
                                     </tr>
