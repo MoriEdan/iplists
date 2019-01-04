@@ -19,4 +19,11 @@ class Api_man extends MY_Controller {
         $this->render($data);
     }
 
+    public function remove($id) {
+        $this->keys_model->remove($id);
+
+        $this->session->set_flashdata('message', 'The record has been removed');
+        redirect('api_man');
+    }
+
 }

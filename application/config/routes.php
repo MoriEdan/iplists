@@ -53,6 +53,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'main';
 $route['documentation'] = 'main/documentation';
 $route['downloads'] = 'main/downloads';
+$route['parse_json'] = 'main/parse_json';
+$route['parse_xml'] = 'main/parse_xml';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;
 

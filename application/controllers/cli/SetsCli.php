@@ -32,9 +32,10 @@ class SetsCli extends CI_Controller {
             foreach ($ipsets as $ip) {
                 $ip_data = array();
                 $ip = clean_ip($ip);
-                echo 'line - ' . $counter . " {$ip}\n";
+                
                 if (check_ip($ip)) {                    
                     if (!$this->ip_lists_model->is_unique($ip)) {
+                        echo 'line ' . $counter . " {$ip} - already exists.\n";
                         $counter++;
                         continue;
                     }
@@ -51,6 +52,7 @@ class SetsCli extends CI_Controller {
                     );
                    
                     $this->ip_lists_model->insert($ip_data);
+                    echo 'line ' . $counter . " {$ip} - added.\n";
                    
                 }
                 $counter++;
@@ -59,7 +61,7 @@ class SetsCli extends CI_Controller {
             $this->import_lists_model->remove($file['id']);
             unlink("{$file['filename']}");
         }
-        echo 'Import Done';
+        echo 'Import Done'."\n";
     }
 
 }

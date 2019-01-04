@@ -36,10 +36,24 @@ class Main extends MY_Controller {
         $this->render($data);
     }
 
-    public function test() {
-        $ip = 'asdfasdf';
-        $network = Network::parse($ip);
-        echo $network->valid();
+    public function parse_json() {
+        $file = file_get_contents('./uploads/ip-ranges.json');
+        
+        $json_data = json_decode($file, TRUE);
+        
+        foreach($json_data['prefixes'] as $key=>$value){
+            if(!empty($value['ip_prefix'])){
+                echo $value['ip_prefix'].'<br />';
+            }            
+        }
+        
+    }
+    
+    public function parse_xml(){
+        $file = file_get_contents('./uploads/PublicIPs_20181231.xml');
+        $xml_data = new SimpleXMLElement($file);
+        print_r($xml_data);
+        
     }
 
     public function test_layout() {

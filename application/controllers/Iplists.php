@@ -205,6 +205,7 @@ class Iplists extends MY_Controller {
         //read the link
         
         $link = $this->list_links_model->find('id=' . $id);
+        
         if (!empty($link)) {
             $file = file_get_contents($link['link']);
             $ipsets = explode("\n",$file);
@@ -218,6 +219,7 @@ class Iplists extends MY_Controller {
                 
             }
         }
+        
         $this->list_links_model->remove($id);
         json_encode(array('status'=> 'done'));
         
