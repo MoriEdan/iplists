@@ -14,7 +14,7 @@
                 $progressbar.css('width', '30%');
             });
             var link_id = $(this).attr('data-link-id');
-            var url = "<?php echo site_url(); ?>iplists/remove_link/" + link_id;
+            var url = "./iplists/remove_link/" + link_id;
             console.log(url);
             $.ajax({
                 url: url,
@@ -117,15 +117,15 @@
                     </div>
                     <div class="panel panel-success">
                         <div class="panel-heading">IP List Links</div>
-                        <div class="panel-body" style="max-height: 20;overflow-y: scroll;">
+                        <div class="panel-body" style="max-height: 250px;overflow-y: scroll;">
 
                             <table class="table table-bordered table-condensed table-striped">
                                 <tr><th>Links</th><th>DC</th><th>P</th><th>Action</th></tr>
                                 <?php foreach ($list_links as $link): ?>
                                     <tr>
                                         <td style="min-width:10px"><a href="<?php echo $link['link'] ?>" data-toggle="tooltip" title="<?php echo $link['link'] ?>" target="_blank"><?php echo $link['link'] ?></a></td>                        
-                                        <td><?php echo $link['isDatacenter']==1 ? 'Yes' : 'No'?></td>
-                                        <td><?php echo $link['isProxy']==1 ? 'Yes' : 'No'?></td>
+                                        <td><?php echo $link['isDatacenter'] == 1 ? 'Yes' : 'No' ?></td>
+                                        <td><?php echo $link['isProxy'] == 1 ? 'Yes' : 'No' ?></td>
                                         <td><a href="#" data-link-id="<?php echo $link['id'] ?>" class="btn btn-danger btn-xs remove-link">remove</a>                                        
                                         </td>
                                     </tr>
@@ -138,7 +138,29 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">Scheduled Import</div>
+                        <div class="panel-body" style="max-height: 250px;overflow-y: scroll;">
+                            <table class="table table-bordered table-condensed table-striped">
+                                <tr><th>Filename</th><th>Status</th></tr>
+
+                                <?php foreach ($import_list as $il): ?>
+                                    <tr>                                        
+                                        <td><?php echo $il['link']; ?></td>
+                                        <td><?php echo $il['status']; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
                     <div class="panel-group">
                         <div class="panel panel-primary">
                             <div class="panel-heading">Stats</div>
@@ -150,27 +172,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="panel panel-warning">
-                        <div class="panel-heading">Scheduled Import</div>
-                        <div class="panel-body">
-                            <table class="table table-bordered table-condensed table-striped">
-                                <tr><th>Filename</th></tr>
-
-                                <?php foreach ($import_list as $il): ?>
-                                    <tr>
-                                        <td><?php echo $il['filename'] ?></td>                        
-                                    </tr>
-                                <?php endforeach; ?>
-                            </table>
-
-
-                        </div>
-                    </div>
-
-                </div>
             </div>
-
         <?php endif; ?>        
     </div>
 

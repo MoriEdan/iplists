@@ -218,7 +218,7 @@ class Iplists extends MY_Controller {
                 
                 
             }
-        }
+        }        
         
         $this->list_links_model->remove($id);
         json_encode(array('status'=> 'done'));
