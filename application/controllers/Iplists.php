@@ -209,6 +209,7 @@ class Iplists extends MY_Controller {
         $link = $this->list_links_model->find('id=' . $id);
 
         if (!empty($link)) {
+            echo $link;
             $file = file_get_contents($link['link']);
             $ipsets = explode("\n", $file);
             foreach ($ipsets as $ipset) {
