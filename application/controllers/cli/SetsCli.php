@@ -63,5 +63,10 @@ class SetsCli extends CI_Controller {
         }
         echo 'Import Done'."\n";
     }
+    
+    public function remove(){
+        
+        
+    }
 
 }

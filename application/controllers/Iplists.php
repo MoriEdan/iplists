@@ -176,6 +176,7 @@ class Iplists extends MY_Controller {
             /** Import List * */
             $import_lists_data = array(
                 'filename' => $filename,
+                'link' => $this->input->post('link'),
                 'isProxy' => $isProxy,
                 'isDatacenter' => $isDatacenter
             );
@@ -203,26 +204,24 @@ class Iplists extends MY_Controller {
 
     public function remove_link($id) {
         //read the link
-        
+
+        $this->list_links_model->remove($id);
         $link = $this->list_links_model->find('id=' . $id);
-        
+
         if (!empty($link)) {
             $file = file_get_contents($link['link']);
-            $ipsets = explode("\n",$file);
+            $ipsets = explode("\n", $file);
             foreach ($ipsets as $ipset) {
                 //valid ip
-                if(check_ip($ipset)){
+                if (check_ip($ipset)) {
                     $ipset = clean_ip($ipset);
-                    $this->ip_lists_model->query("DELETE FROM ip_lists WHERE ip='".$ipset."'");                                        
+                    $this->ip_lists_model->query("DELETE FROM ip_lists WHERE ip='" . $ipset . "'");
                 }
-                
-                
             }
-        }        
-        
-        $this->list_links_model->remove($id);
-        json_encode(array('status'=> 'done'));
-        
+        }
+
+
+        json_encode(array('status' => 'done'));
     }
 
     public function edit($id) {
