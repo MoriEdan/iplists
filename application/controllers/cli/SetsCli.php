@@ -26,7 +26,7 @@ class SetsCli extends CI_Controller {
 
             $ipsets = read_ipset($file['filename']);
             echo 'Processing - ' . $file['filename'] . "\n";
-            $this->import_list_model->save(array('status'=> 'importing'), $file['id']);
+            $this->import_lists_model->save(array('status'=> 'importing'), $file['id']);
             $isDatacenter = $file['isDatacenter'] == 1 ? TRUE : FALSE;
             $isProxy = $file['isProxy'] == 1 ? TRUE : FALSE;
             $counter = 1;
@@ -59,7 +59,7 @@ class SetsCli extends CI_Controller {
                 $counter++;
             }
             echo $file['filename'] . ' - done'."\n";
-            $this->import_list_model->save(array('status'=> 'done'), $file['id']);
+            $this->import_lists_model->save(array('status'=> 'done'), $file['id']);
             //$this->import_lists_model->remove($file['id']);
             unlink("{$file['filename']}");
         }
