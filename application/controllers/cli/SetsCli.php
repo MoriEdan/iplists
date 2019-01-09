@@ -69,9 +69,10 @@ class SetsCli extends CI_Controller {
                     $ipsets = explode("\n", $link);
                     foreach ($ipsets as $ipset) {
                         //valid ip
-                        if (check_ip($ipset)) {
+                        if (check_ip($ipset)) {                            
                             $ipset = clean_ip($ipset);
                             $this->ip_lists_model->query("DELETE FROM ip_lists WHERE ip='" . $ipset . "'");
+                            echo 'line ' . $counter . " {$ipsets} - deleted.\n";
                         }
                     }
                 }
