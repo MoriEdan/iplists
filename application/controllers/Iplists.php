@@ -169,7 +169,7 @@ class Iplists extends MY_Controller {
             $file = file_get_contents($this->input->post('link'));
             //save this to uploads
             $filename = './uploads/ipsets-' . time();
-            file_put_contents($filename, $file);
+            //file_put_contents($filename, $file);
             $isProxy = $this->input->post('isProxy') == 1 ? 1 : 0;
             $isDatacenter = $this->input->post('isDatacenter') == 1 ? 1 : 0;
 

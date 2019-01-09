@@ -140,14 +140,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-warning">
-                        <div class="panel-heading">Scheduled Import</div>
+                        <div class="panel-heading">Scheduled Task</div>
                         <div class="panel-body" style="max-height: 250px;overflow-y: scroll;">
                             <table class="table table-bordered table-condensed table-striped">
-                                <tr><th>Filename</th><th>Status</th></tr>
+                                <tr><th>Filename</th><th>Task</th><th>Status</th></tr>
 
                                 <?php foreach ($import_list as $il): ?>
                                     <tr>                                        
                                         <td><?php echo $il['link']; ?></td>
+                                        <td><?php echo $il['task']; ?></td>
                                         <td><?php echo $il['status']; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -166,8 +167,7 @@
                             <div class="panel-heading">Stats</div>
                             <div class="panel-body">
                                 IP Rules: <?php echo number_format($ip_includes) ?><br />
-                                List links: <?php echo count($list_links); ?><br />
-                                Scheduled Import: <?php echo count($import_list); ?>
+                                List links: <?php echo count($list_links); ?><br />                                
                             </div>
                         </div>
                     </div>

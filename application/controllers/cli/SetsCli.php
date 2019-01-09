@@ -64,6 +64,7 @@ class SetsCli extends CI_Controller {
                 }
 
                 if ($file['task'] == 'remove') {
+                    $this->import_lists_model->save(array('status' => 'removing'), $file['id']);
                     $link = file_get_contents($file['link']);
                     $ipsets = explode("\n", $link);
                     foreach ($ipsets as $ipset) {
