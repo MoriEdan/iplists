@@ -67,13 +67,18 @@ class SetsCli extends CI_Controller {
                     $this->import_lists_model->save(array('status' => 'removing'), $file['id']);
                     $link = file_get_contents($file['link']);
                     $ipsets = explode("\n", $link);
+                     $counter = 1;
                     foreach ($ipsets as $ipset) {
                         //valid ip
                         if (check_ip($ipset)) {                            
                             $ipset = clean_ip($ipset);
-                            $this->ip_lists_model->query("DELETE FROM ip_lists WHERE ip='" . $ipset . "'");
-                            echo 'line ' . $counter . " {$ipsets} - deleted.\n";
+                            if($this->ip_lists_model->query("DELETE FROM ip_lists WHERE ip='" . $ipset . "'")){
+                                echo 'line ' . $counter . " {$ipset} - deleted.\n";
+                            } else {
+                                echo 'line ' . $counter . " {$ipset} - not found.\n";
+                            }
                         }
+                        $counter++;
                     }
                 }
             }
